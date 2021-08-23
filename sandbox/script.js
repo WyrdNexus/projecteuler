@@ -1,1 +1,1 @@
-../euler/problem2.js
+../euler/problem3.js
