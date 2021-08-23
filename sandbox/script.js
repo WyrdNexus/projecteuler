@@ -1,0 +1,1 @@
+../euler/blank.js
