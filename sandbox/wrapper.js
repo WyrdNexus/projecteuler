@@ -37,6 +37,13 @@ export default class Wrapper {
         this.append(tag, content).to(this.domContainer)
     }
 
+    link(text, link) {
+        let el = document.createElement('a')
+        el.href = link
+        el.innerHTML = text
+        this.append('p',el).to(this.domContainer)
+    }
+
     inject(obj) {
         try {
             obj.init(this)

@@ -1,14 +1,17 @@
-export default class Script{
+export default class Problem1 {
     domCurrent
 
     static init(wrapper) {
-        return new Script(wrapper)
+        return new Problem1(wrapper)
     }
 
     constructor(wrapper) {
         this.wrapper = wrapper
 
-        wrapper.append('h1', 'Current Step')
+        wrapper.add('h1', 'Multiples of 3 or 5')
+        wrapper.link('Problem 1', 'https://projecteuler.net/problem=1')
+        wrapper.add('p','If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.')
+        wrapper.add('p','Find the sum of all the multiples of 3 or 5 below 1000.')
         let c = wrapper.append('h3','0')
         this.domCurrent = c.el()
         c.to(wrapper.domContainer)
@@ -39,6 +42,6 @@ export default class Script{
             msg(`5 ${i}`)
         }
 
-        this.wrapper.add('h3',"result : "+ total)
+        this.current("result : "+ total)
     }
 }

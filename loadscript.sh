@@ -1,19 +1,24 @@
 #!/usr/bin/env bash
 
 function msg {
-    echo "  ${1}"
+  echo "  ${1}"
 }
 
-FILE="../${1}.js"
+function fixown {
+  if [[ $EUID -ne 0 ]]; then
+   echo "Changing ownsership requires root privileges. Run with sudo."
+   exit 1
+  fi
 
-pwd
-ll ../
+  chown -R wyrdn:www-data *
+}
 
-if ! test -f $FILE; then
-    msg "File not found: ../${FILE}"
-    exit 1
+FILE="${1}.js"
+
+if ! test -f "./$FILE"; then
+  msg "File not found: ./${FILE}"
+  exit 1
 fi
 
-pwd
-rm ../sandbox/script.js
-ln -s ../$FILE
+rm ./sandbox/script.js
+ln -s ../$FILE ./sandbox/script.js
